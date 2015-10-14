@@ -1,5 +1,5 @@
 #sovpn
-##A vpn connection handler that uses tmux.
+#####A vpn connection handler that uses tmux.
 
 ###Overview
 Provides an easier way to connect and disconnect the active vpn connection.
