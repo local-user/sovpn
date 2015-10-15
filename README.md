@@ -1,19 +1,24 @@
 #sovpn
 #####A vpn connection handler that uses tmux.
 
+
 ###Overview
 Provides an easier way to connect and disconnect the active vpn connection.
 
 ###Usage
 sovpn [list|connect|attach|disconnect] vpn
 
-###Extra
 
-######File Structure
+###File Structure
+
+######Config
 * `sovpn/vpn/<provider>`
 * `sovpn/vpn/<provider>/<country>`
 * `sovpn/vpn/<provider>/<country>/<region>`
 * `sovpn/vpn/<provider>/<country>/<region>/config.<vpn type>`
+
+
+###Extra
 
 ######Matching
 If multiple provider(s), country(s) or region(s) match a vpn.
