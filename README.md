@@ -1,5 +1,5 @@
 #sovpn
-#####A CLI vpn connection handler.
+#####A BASH vpn connection handler.
 
 
 ###Overview
