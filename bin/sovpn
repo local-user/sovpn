@@ -63,14 +63,16 @@
             filename=$( basename $global_vpn )
             extension="${filename##*.}"
 
+            # display
+            echo ''
+            display_msg "   Creating new session from 'sovpn/vpn/${global_vpn:2}'"
+            echo ''
+
             # connect
             case "$extension" in
                 ovpn)   cmd_connect_openvpn
                         ;;
             esac
-
-            # display
-            display_msg "Created new session from '$global_vpn'"
 
             # return
             return 0
