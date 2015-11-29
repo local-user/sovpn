@@ -11,7 +11,7 @@
 #
 #   [ Overview ]
 #
-#       A vpn connection handler that uses tmux.
+#       A CLI vpn connection handler.
 #
 #
 
@@ -27,7 +27,6 @@
     openvpn='openvpn'
     tail='tail'
     tree='tree'
-    tmux='tmux'
 
 
     #
@@ -49,40 +48,6 @@
     #
     #   function(s)
     #
-
-        #
-        # check_running - check if tmux running & exit
-        #
-        function check_running() {
-
-            # check
-            $tmux ls 2> /dev/null | grep "$script_name" > /dev/null 2>&1
-            if [ $? -eq 0 ]; then
-                display_error 'Connection already active'
-                $exit 2
-            fi
-
-            # return
-            return 0
-
-        }
-
-        #
-        # cmd_attach - attach running session
-        #
-        function cmd_attach() {
-
-            # attach
-            $tmux a -t "$script_name" 2> /dev/null
-            if [ $? -ne 0 ]; then
-                display_error 'No active sessions'
-                $exit 2
-            fi
-
-            # return
-            return 0
-
-        }
 
         #
         # cmd_connect - determine configuration type
@@ -113,7 +78,7 @@
         }
 
         #
-        # cmd_connect_openvpn - create a new tmux w/ openvpn on "$global_vpn"
+        # cmd_connect_openvpn - create a new connection w/ openvpn using "$global_vpn" config
         #
         function cmd_connect_openvpn() {
 
@@ -123,23 +88,7 @@
                 $exit 2
 
             # connect
-            $tmux new -s "$script_name" $openvpn --config "$script_wkg_vpn/$global_vpn"
-
-            # return
-            return 0
-
-        }
-
-        #
-        # cmd_disconnect - kill the tmux housing the vpn connection.
-        #
-        function cmd_disconnect() {
-
-            # disconnect
-            $tmux kill-session -t "$script_name" > /dev/null 2>&1
-
-            # display
-            display_msg "Disconnected active session"
+            $openvpn --config "$script_wkg_vpn/$global_vpn"
 
             # return
             return 0
@@ -229,20 +178,11 @@
 
         # function
         case "$1" in
-            attach|-a)
-                shift
-                cmd_attach
-                ;;
             connect|-c)
                 shift
                 set_vpn "$1"
                 shift
-                check_running
                 cmd_connect "$@"
-                ;;
-            disconnect|-d)
-                shift
-                cmd_disconnect
                 ;;
             list|-l)
                 shift
