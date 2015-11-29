@@ -17,6 +17,7 @@
 
 
 
+
     #
     #   command(s)
     #
@@ -24,9 +25,13 @@
     echo='echo'
     exit='exit'
     find='find'
-    openvpn='openvpn'
     tail='tail'
     tree='tree'
+
+    #
+    #   common(s) - vpn(s)
+    #
+    openvpn='openvpn'
 
 
     #
@@ -199,6 +204,7 @@
     #   logic
     #   -- end
     #
+
 
 
 
