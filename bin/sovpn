@@ -65,7 +65,7 @@
 
             # display
             echo ''
-            display_msg "   Creating new session from 'sovpn/vpn/${global_vpn:2}'"
+            display_msg "   Connecting to VPN with 'sovpn/vpn/${global_vpn:2}'"
             echo ''
 
             # connect
