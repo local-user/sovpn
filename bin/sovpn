@@ -61,7 +61,7 @@
 
             # arg
             [ -z "$global_vpn" ]                            &&  \
-                display_error "No vpn specified"            &&  \
+                display_error "No VPN specified"            &&  \
                 $exit 2
 
             # disect
@@ -91,7 +91,7 @@
 
             # arg
             [ -z "$global_vpn" ]                            &&  \
-                display_error "No vpn specified"            &&  \
+                display_error "No VPN specified"            &&  \
                 $exit 2
 
             # connect
@@ -127,7 +127,6 @@
         }
 
         #
-        #
         # display_usage
         #
         function display_usage() {
@@ -141,7 +140,7 @@
 
             # arg
             [ -z "$1" ]                                     &&  \
-                display_error "vpn path required"           &&  \
+                display_error "VPN path required"           &&  \
                 display_usage                               &&  \
                 $exit 2
 
@@ -150,8 +149,7 @@
 
             # check
             [ -z "$global_vpn" ]                            &&  \
-                display_error "no vpn found matching '$1'"  &&  \
-                display_usage                               &&  \
+                display_error "No VPN found matching '$1'"  &&  \
                 $exit 2
 
             # return
