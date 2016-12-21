@@ -18,9 +18,7 @@
 
 
 
-    #
-    #   command(s)
-    #
+    # command(s)
     mkdir='mkdir'
     echo='echo'
     exit='exit'
@@ -28,35 +26,25 @@
     tail='tail'
     tree='tree'
 
-    #
-    #   common(s) - vpn(s)
-    #
-    openvpn='openvpn'
-
-
-    #
-    #   default(s)
-    #
+    # default(s)
     script_dir=$(dirname $0);
     script_name='sovpn'
     script_path=$0
     script_wkg="$HOME/.config/sovpn"
     script_wkg_vpn="$script_wkg/vpn"
 
-
-    #
-    #   global(s)
-    #
+    # global(s)
     global_vpn=
 
+    # vpn(s)
+    openvpn='openvpn'
 
-    #
-    #   function(s)
-    #
 
-        #
-        # cmd_connect - determine configuration type
-        #
+
+
+    # | function(s)
+
+        # command - connect
         function cmd_connect() {
 
             # arg
@@ -84,9 +72,7 @@
 
         }
 
-        #
-        # cmd_connect_openvpn - create a new connection w/ openvpn using "$global_vpn" config
-        #
+        # command - connect - openvpn
         function cmd_connect_openvpn() {
 
             # arg
@@ -102,9 +88,7 @@
 
         }
 
-        #
-        # cmd_list - tree vpn folder
-        #
+        # command - list
         function cmd_list() {
             $echo "| $script_name"
             $tree -d -C -l --noreport "$script_wkg_vpn" | \
@@ -112,30 +96,22 @@
         }
         # reference: /usr/bin/pass, aka 'password-store'
 
-        #
-        # display_error
-        #
+        # display - error
         function display_error() {
             $echo "Error: $1."
         }
 
-        #
-        # display_msg
-        #
+        # display - msg
         function display_msg() {
             $echo "$1."
         }
 
-        #
-        # display_usage
-        #
+        # display - usage
         function display_usage() {
             $echo "$script_name usage: $script_name [list|connect|attach|disconnect] vpn"
         }
 
-        #
-        # set_vpn - searches wkg for "$1" and sets vpn config path as "$global_vpn".
-        #
+        # set - vpn
         function set_vpn() {
 
             # arg
@@ -157,17 +133,12 @@
 
         }
 
-    #
-    #   function(s)
-    #   -- end
-    #
+    # function(s) |
 
 
-    #
-    #   logic
-    #
+    # | logic
 
-        # create working
+        # create - working
         if [ ! -d "$script_wkg_vpn" ]; then
             $mkdir -p "$script_wkg_vpn"
             if [ $? -ne 0 ]; then
@@ -175,7 +146,7 @@
             fi
         fi
 
-        # arg
+        # argument(s)
         if [ $# -eq 0 ]; then
             display_usage
             $exit 2
@@ -198,10 +169,7 @@
                 ;;
         esac
 
-    #
-    #   logic
-    #   -- end
-    #
+    # logic |
 
 
 
